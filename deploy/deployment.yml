@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    run: deploy
+  name: deploy
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      run: deploy
+  template:
+    metadata:
+      labels:
+        run: deploy
+    spec:
+      containers:
+      - image: hemasivakishore/jinja2u:16.04
+        name: deploy

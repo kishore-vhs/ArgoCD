@@ -1,0 +1,61 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argoapps
+  namespace: argocd
+spec:
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+      allowEmpty: true
+  project: management-tools
+  source:
+    repoURL: https://github.com/kishore-vhs/ArgoCD.git
+    targetRevision: HEAD
+    path: ArgoApps
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: ingress-nginx
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: deploy
+  namespace: argocd
+spec:
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+      allowEmpty: true
+  project: deploy
+  source:
+    repoURL: https://github.com/kishore-vhs/ArgoCD.git
+    targetRevision: HEAD
+    path: deploy
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: votingapp
+  namespace: argocd
+spec:
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+      allowEmpty: true
+  project: votingapp
+  source:
+    repoURL: https://github.com/kishore-vhs/ArgoCD.git
+    targetRevision: HEAD
+    path: voting_app
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default

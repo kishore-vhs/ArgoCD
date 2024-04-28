@@ -1,5 +1,4 @@
-#Redis Service and Deployment
----
+# Redis Service and Deployment
 apiVersion: v1
 kind: Service
 metadata:
@@ -34,7 +33,7 @@ spec:
     spec:
       containers:
       - name: redis
-        image: redis: alpine
+        image: redis:alpine
         ports:
         - containerPort: 6379
           name: redis
@@ -99,7 +98,7 @@ metadata:
   name: postgres-pv-claim
 spec:
   accessModes:
-    - ReadWriteOnce
+  - ReadWriteOnce
   resources:
     requests:
       storage: 1Gi
@@ -116,7 +115,7 @@ metadata:
     service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
 spec:
   type: ClusterIP
-  ports: 
+  ports:
   - port: 80
     targetPort: 80
     name: result-service
@@ -157,9 +156,9 @@ metadata:
   spec:
     type: ClusterIP
     ports:
-      - port: 80
-        targetPort: 80
-        name: vote-service
+    - port: 80
+      targetPort: 80
+      name: vote-service
     selector:
       app: vote
 ---

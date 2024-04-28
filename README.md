@@ -19,3 +19,4 @@ argocd app set test-deploy --sync-policy automated --auto-prune --allow-empty --
 argocd app set voting --sync-policy automated --auto-prune --allow-empty --self-heal
 
 
+ argocd login $ARGOCD_SERVER --username admin --password iU2VGW6yzCGWrNDU --insecure
